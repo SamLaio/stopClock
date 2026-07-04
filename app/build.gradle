@@ -41,7 +41,7 @@ tasks.register("syncReleaseApk", Sync) {
     into(releaseOutputDir)
 }
 
-tasks.named("assembleRelease") {
+tasks.matching { it.name == "assembleRelease" }.configureEach {
     finalizedBy("syncReleaseApk")
 }
 

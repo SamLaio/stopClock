@@ -6,6 +6,7 @@ build/
 local.properties
 app/build/
 app/release/
+AGENTS.md
 key/
 .DS_Store
 captures/

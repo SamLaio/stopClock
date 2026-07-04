@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.stopclock'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.stopclock"
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xlint:deprecation']
+}
+
+def releaseOutputDir = layout.projectDirectory.dir("release")
+def releaseApkSourceDir = layout.buildDirectory.dir("outputs/apk/release")
+
+tasks.register("syncReleaseApk", Sync) {
+    from(releaseApkSourceDir) {
+        include("**/*.apk")
+    }
+    into(releaseOutputDir)
+}
+
+tasks.named("assembleRelease") {
+    finalizedBy("syncReleaseApk")
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'com.google.android.material:material:1.13.0'
+}

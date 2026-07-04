@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#2DD4BF</color>
+    <color name="accent_alt">#60A5FA</color>
+    <color name="danger">#FB7185</color>
+    <color name="screen_top">#0B1220</color>
+    <color name="screen_bottom">#111C34</color>
+    <color name="timer_card">#101F33</color>
+    <color name="input_background">#16263D</color>
+    <color name="text_secondary">#A9B8CE</color>
+</resources>
